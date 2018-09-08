@@ -16,6 +16,13 @@ jobs:
           paths:
             - echo-output
 
+  hold_on_branch:
+    filters:
+      branches:
+        only:
+          - master  two:
+    type: approval
+
   three:
     docker:
       - image: circleci/ruby:2.4.1-jessie
@@ -38,6 +45,7 @@ workflows:
   do_it_all:
     jobs:
       - one
+      - hold_on_branch
       - three:
           requires:
             - one
