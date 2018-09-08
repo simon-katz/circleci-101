@@ -50,8 +50,8 @@ workflows:
       #     #     ignore:
       #     #       - master
       - one
-          requires:
-            - hold_on_branch
+          # requires:
+          #   - hold_on_branch
       - two:
           requires:
             - one
