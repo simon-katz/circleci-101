@@ -46,6 +46,8 @@ workflows:
     jobs:
       - one
       - hold_on_branch
-      - three:
           requires:
             - one
+      - three:
+          requires:
+            - hold_on_branch
