@@ -16,7 +16,7 @@ jobs:
           paths:
             - echo-output
 
-  two:
+  three:
     docker:
       - image: circleci/ruby:2.4.1-jessie
     steps:
@@ -35,9 +35,9 @@ jobs:
 workflows:
   version: 2
 
-  one_and_two:
+  do_it_all:
     jobs:
       - one
-      - two:
+      - three:
           requires:
             - one
