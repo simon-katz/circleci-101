@@ -22,6 +22,8 @@ jobs:
         only:
           - master  two:
     type: approval
+    steps:
+      - run: echo "Doing branch hold stuff"
 
   three:
     docker:
@@ -46,6 +48,8 @@ workflows:
     jobs:
       - one
       - hold_on_branch
-      - three:
           requires:
             - one
+      - three:
+          requires:
+            - hold_on_branch
