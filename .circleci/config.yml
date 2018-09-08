@@ -16,14 +16,14 @@ jobs:
           paths:
             - echo-output
 
-  # hold_on_branch:
-  #   filters:
-  #     branches:
-  #       only:
-  #         - master  two:
-  #   type: approval
-  #   steps:
-  #     - run: echo "Doing branch hold stuff"
+  hold_on_branch:
+    filters:
+      branches:
+        only:
+          - master  two:
+    type: approval
+    steps:
+      - run: echo "Doing branch hold stuff"
 
   three:
     docker:
@@ -47,10 +47,10 @@ workflows:
   do_it_all:
     jobs:
       - one
-      # - hold_on_branch
-      #     requires:
-      #       - one
+      - hold_on_branch
+          requires:
+            - one
       - three:
           requires:
             - one
-            # - hold_on_branch
+            - hold_on_branch
