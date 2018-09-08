@@ -45,10 +45,10 @@ workflows:
   do_it_all:
     jobs:
       - hold_on_branch
-          filters:
-            branches:
-              ignore:
-                - master
+          # filters:
+          #   branches:
+          #     ignore:
+          #       - master
       - one
           requires:
             - hold_on_branch
