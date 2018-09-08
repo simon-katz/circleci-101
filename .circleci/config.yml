@@ -1,12 +1,12 @@
 version: 2
 jobs:
 
-  # hold_on_branch:
-  #   docker:
-  #     - image: circleci/ruby:2.4.1-jessie
-  #   type: approval
-  #   steps:
-  #     - run: echo "Doing branch hold stuff"
+  hold_on_branch:
+    docker:
+      - image: circleci/ruby:2.4.1-jessie
+    # type: approval
+    steps:
+      - run: echo "Doing branch hold stuff"
 
   one:
     docker:
@@ -44,14 +44,14 @@ workflows:
 
   do_it_all:
     jobs:
-      # - hold_on_branch
-      #     # filters:
-      #     #   branches:
-      #     #     ignore:
-      #     #       - master
+      - hold_on_branch
+          # filters:
+          #   branches:
+          #     ignore:
+          #       - master
       - one
-          # requires:
-          #   - hold_on_branch
+          requires:
+            - hold_on_branch
       - two:
           requires:
             - one
